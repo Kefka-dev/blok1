@@ -3,23 +3,22 @@
 
 int main()
 {
-    int cislo, asciiKod, testCislo;
-    cislo = 99999;
+    int cislo, asciiKod;
+    cislo = 33777;
     asciiKod = 88;
-    testCislo = 10;
-    //uloha1_1(cislo, asciiKod);
-    printf("%d\n", decToBin(cislo));
-    printf("mocnia 10 %d, pre exponent %d\n", mocninaDesat(testCislo), testCislo);
+    uloha1_1(cislo, asciiKod);
     return 0;
 }
 
 int uloha1_1(int cislo, int asciiKod)
 {
-    printf("cislo %d, v dvojkovej:%d\n", cislo, decToBin(cislo));
+    printf("cislo %d, v dvojkovej:", cislo);
+    decToBin(cislo);
     printf("cislo %d, v desiatkovej:%d\n", cislo, cislo);
-    printf("cislo %d, v hexadecimalnej:%x\n", cislo, cislo);
+    printf("cislo %d, v hexadecimalnej:%x\n\n", cislo, cislo);
 
-    printf("ascii kod %d, v dvojkovej:%d\n", asciiKod, decToBin(asciiKod));
+    printf("ascii kod %d, v dvojkovej:", asciiKod);
+    decToBin(asciiKod);
     printf("ascii kod %d, v desiatkovej:%d\n", asciiKod, asciiKod);
     printf("ascii kod %d, v hexadecimalnej:%x\n", asciiKod, asciiKod);
 
@@ -36,13 +35,13 @@ int decToBin(int cislo)
     {
         int cifier = 0;
         int tmp = cislo;
-        //vypocet poctu cifier, 0 je prva cifra
+        //vypocet poctu cifier, 0 je prva cifra, algoritmums z Logickych systemov
         while (tmp>=1)
         {
             tmp = tmp/2;
             cifier++;
         }
-        printf("cifier %d\n", cifier);
+        //printf("cifier %d\n", cifier);
         //naplnenie pola, pole[0] je LSB
         int binCisloInvert[cifier];
         for (int i = 0; i < cifier; i++)
@@ -51,23 +50,14 @@ int decToBin(int cislo)
             cislo = cislo/2;
         }
 
-        int binCislo=0;
-        //vytvorenie actual binarneho cisla 
-        for (int i = 0; i < cifier; i++)
+        for (int i = cifier-1; i >= 0; i--)
         {
-            binCislo = binCislo + binCisloInvert[i]*mocninaDesat(i);
-            //printf("binCislo %d, opakovanie %d\n", binCislo, i );
+            printf("%d",binCisloInvert[i]);
+            if (i == 0)
+            {
+                printf("\n");
+            }
         }
-        return binCislo;
+        return 0;
     }
-}
-
-int mocninaDesat(int exponent)
-{
-    int mocnina = 1;
-    for (int i = 0; i < exponent; i++)
-    {
-        mocnina = mocnina * 10;
-    }
-    return mocnina;
 }
