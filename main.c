@@ -3,26 +3,27 @@
 
 int main()
 {
-    int cislo, asciiKod, vstupUzivatela;
-    cislo = 33777;
-    asciiKod = 88;
-    //uloha1_1(cislo, asciiKod);
-    scanf("%d", &vstupUzivatela);
-    arabToRoman(vstupUzivatela);
+    uloha1_1();
+    //arabToRoman();
+    //uloha1_3();
     return 0;
 }
 
-int uloha1_1(int cislo, int asciiKod)
+int uloha1_1()
 {
-    printf("cislo %d, v dvojkovej:", cislo);
-    decToBin(cislo);
-    printf("cislo %d, v desiatkovej:%d\n", cislo, cislo);
-    printf("cislo %d, v hexadecimalnej:%x\n\n", cislo, cislo);
+    int cislo, asciiKod;
+    cislo = 33777;
+    asciiKod = 88;
 
-    printf("ascii kod %d, v dvojkovej:", asciiKod);
+    printf("cislo %d, v dvojkovej: ", cislo);
+    decToBin(cislo);
+    printf("cislo %d, v desiatkovej: %d\n", cislo, cislo);
+    printf("cislo %d, v hexadecimalnej: %x\n\n", cislo, cislo);
+
+    printf("ascii kod %d, v dvojkovej: ", asciiKod);
     decToBin(asciiKod);
-    printf("ascii kod %d, v desiatkovej:%d\n", asciiKod, asciiKod);
-    printf("ascii kod %d, v hexadecimalnej:%x\n", asciiKod, asciiKod);
+    printf("ascii kod %d, v desiatkovej: %d\n", asciiKod, asciiKod);
+    printf("ascii kod %d, v hexadecimalnej: %x\n", asciiKod, asciiKod);
 
     return 0;
 }
@@ -55,6 +56,11 @@ int decToBin(int cislo)
         for (int i = cifier-1; i >= 0; i--)
         {
             printf("%d",binCisloInvert[i]);
+            if (i%4 == 0)
+            {
+                printf(" ");
+            }
+            
             if (i == 0)
             {
                 printf("\n");
@@ -64,8 +70,11 @@ int decToBin(int cislo)
     }
 }
 
-int arabToRoman(int cislo)
+//uloha1_2
+int arabToRoman()
 {
+    int cislo;
+    scanf("%d", &cislo);
     while (cislo>0)
     {
         if (cislo==100)
@@ -115,5 +124,28 @@ int arabToRoman(int cislo)
         }
         //printf("\ncislo=%d\n", cislo);
     }    
+    return 0;
+}
+
+//fibonaciho cisla
+int uloha1_3()
+{
+    int clen1=1, clen2=1, fibC=0, k;
+    scanf("%d", &k);
+    if (k<2)
+    {
+        printf("Zadaj cislo >=2");
+    }
+    else
+    {
+        printf("1\n1\n");
+        while (clen1+clen2<k)
+        {
+            fibC = clen1 + clen2;
+            printf("%d\n", fibC);
+            clen1 = clen2;
+            clen2 = fibC;
+        }
+    }
     return 0;
 }
