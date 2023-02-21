@@ -3,9 +3,15 @@
 
 int main()
 {
-    uloha1_1();
+    //uloha1_1();
     //arabToRoman();
     //uloha1_3();
+    // int hexacislo = 0x3C0;
+    // printf("%x\n", hexacislo);
+    // printf("%x\n", hexacislo%256);
+    // printf("%x\n", 0xFF -(hexacislo%256)+1);
+
+    chceckSumCalc();
     return 0;
 }
 
@@ -44,7 +50,6 @@ int decToBin(int cislo)
             tmp = tmp/2;
             cifier++;
         }
-        //printf("cifier %d\n", cifier);
         //naplnenie pola, pole[0] je LSB
         int binCisloInvert[cifier];
         for (int i = 0; i < cifier; i++)
@@ -147,5 +152,35 @@ int uloha1_3()
             clen2 = fibC;
         }
     }
+    return 0;
+}
+
+int chceckSumCalc()
+{
+    char hexString[40];
+    unsigned char byteArray[20];
+    int sum = 0, checkSum = 0;
+
+    for (int i = 0; i < 40; i++)
+    {
+        scanf("%c", &hexString[i]);
+    }
+
+    for (int i = 0; i < 20; i++)
+    {
+        // sscanf cita z buffru, hexString, "%2hhx" urcuje format, precita 2 charaktery, hh ze to je unsigned char, x hexadecimalne cislo
+        sscanf(hexString + 2*i, "%2hhx", &byteArray[i]);
+        sum = sum + byteArray[i];
+    }
+
+    // &  testovaci vypis pola
+    // for (int i = 0; i < 20; i++)
+    // {
+    //     printf("%x ", byteArray[i]);
+    // }
+    // printf("\n%x", sum);
+    // printf("\n%x", sum%256);
+    checkSum = 0xFF - (sum%256) + 1;
+    printf("%x", checkSum);
     return 0;
 }
