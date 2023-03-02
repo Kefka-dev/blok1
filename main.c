@@ -166,12 +166,13 @@ int chceckSumCalc()
     char hexString[40];
     unsigned char byteArray[20];
     int sum = 0, checkSum = 0;
-
+    //nacitanie IntelHexu do pola
     for (int i = 0; i < 40; i++)
     {
         scanf("%c", &hexString[i]);
     }
 
+    //naporcovanie IntelHexu po dvojiciach
     for (int i = 0; i < 20; i++)
     {
         // "%2hhx" urcuje format, precita 2 charaktery, hh ze to je unsigned char, x hexadecimalne cislo
