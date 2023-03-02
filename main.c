@@ -36,6 +36,7 @@ int uloha1_1()
     return 0;
 }
 
+//prevod z Desiatkovej do Binarnej
 int decToBin(int cislo)
 {
     if (cislo == 0)
@@ -160,7 +161,7 @@ int uloha1_3()
     }
     return 0;
 }
-
+//uloha 1_6
 int chceckSumCalc()
 {
     char hexString[40];
