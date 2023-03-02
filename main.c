@@ -11,6 +11,8 @@ int main()
     // printf("%x\n", hexacislo%256);
     // printf("%x\n", 0xFF -(hexacislo%256)+1);
 
+    decToBin(45);
+
     chceckSumCalc();
     return 0;
 }
@@ -39,6 +41,10 @@ int decToBin(int cislo)
     if (cislo == 0)
     {
         return 0;
+    }
+    else if (cislo<0)
+    {
+        printf("Zadaj cislo >=0!");
     }
     else
     {
@@ -168,7 +174,7 @@ int chceckSumCalc()
 
     for (int i = 0; i < 20; i++)
     {
-        // sscanf cita z buffru, hexString, "%2hhx" urcuje format, precita 2 charaktery, hh ze to je unsigned char, x hexadecimalne cislo
+        // "%2hhx" urcuje format, precita 2 charaktery, hh ze to je unsigned char, x hexadecimalne cislo
         sscanf(hexString + 2*i, "%2hhx", &byteArray[i]);
         sum = sum + byteArray[i];
     }
@@ -178,8 +184,8 @@ int chceckSumCalc()
     // {
     //     printf("%x ", byteArray[i]);
     // }
-    // printf("\n%x", sum);
-    // printf("\n%x", sum%256);
+    //10010000214601360121470136007EFE09D21901XX
+    //LLAAAATTDD                              CC  
     checkSum = 0xFF - (sum%256) + 1;
     printf("%x", checkSum);
     return 0;
