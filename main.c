@@ -6,12 +6,6 @@ int main()
     //uloha1_1();
     //arabToRoman();
     //uloha1_3();
-    // int hexacislo = 0x3C0;
-    // printf("%x\n", hexacislo);
-    // printf("%x\n", hexacislo%256);
-    // printf("%x\n", 0xFF -(hexacislo%256)+1);
-
-    decToBin(45);
 
     chceckSumCalc();
     return 0;
